@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Merry Trumpmas</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Christmas Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&display=swap" rel="stylesheet">
+
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background: radial-gradient(circle at top, #1a2a4f, #0b132b);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: system-ui, sans-serif;
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      position: relative;
+    }
+
+    .reveal-box {
+      width: 260px;
+      height: 260px;
+      background: linear-gradient(145deg, #c1121f, #780000);
+      border-radius: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+      transition: transform 0.6s ease, opacity 0.6s ease;
+    }
+
+    .reveal-box:hover {
+      transform: scale(1.05);
+    }
+
+    .content {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+      pointer-events: none;
+    }
+
+    .content.visible {
+      opacity: 1;
+      transform: scale(1);
+      pointer-events: auto;
+    }
+
+    .content img {
+      max-width: 260px;
+      border-radius: 14px;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+    }
+
+    .message {
+      margin-top: 18px;
+      font-family: 'Mountains of Christmas', cursive;
+      font-size: 3rem;
+      color: #fdf0d5;
+      text-shadow:
+        0 0 10px rgba(255,255,255,0.4),
+        0 4px 12px rgba(0,0,0,0.6);
+    }
+
+    .hidden {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <div id="box" class="reveal-box">
+      🎁 Tap to Reveal
+    </div>
+
+    <div id="content" class="content">
+      <img src="image.jpg" alt="Merry Trumpmas">
+      <div class="message">Merry Trumpmas</div>
+    </div>
+  </div>
+
+  <script>
+    const box = document.getElementById("box");
+    const content = document.getElementById("content");
+
+    box.addEventListener("click", () => {
+      box.style.transform = "scale(0.8)";
+      box.style.opacity = "0";
+      setTimeout(() => {
+        box.classList.add("hidden");
+        content.classList.add("visible");
+      }, 500);
+    });
+  </script>
+
+</body>
+</html>
